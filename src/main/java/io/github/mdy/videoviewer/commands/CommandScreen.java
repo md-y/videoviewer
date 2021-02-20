@@ -99,6 +99,12 @@ public class CommandScreen implements CommandExecutor {
             return true;
         }
 
+        int maxEntities = VideoViewer.config.getInt("max-entities-per-screen");
+        if (width * height > maxEntities) {
+            player.sendMessage("This screen size has too many entities. Max: " + maxEntities);
+            return true;
+        }
+
         ScreenObject screen = new ScreenObject(width, height);
         screen.build(player.getLocation(), type);
         setPlayerScreen(player, screen);

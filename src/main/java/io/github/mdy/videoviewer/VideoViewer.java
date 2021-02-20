@@ -4,6 +4,7 @@ import io.github.mdy.videoviewer.commands.CommandScreen;
 import io.github.mdy.videoviewer.commands.MainTabCompleter;
 import io.github.mdy.videoviewer.playback.VideoDecoder;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.command.Command;
@@ -38,10 +39,12 @@ import java.util.logging.LogManager;
 )
 public class VideoViewer extends JavaPlugin {
     public static JavaPlugin instance;
+    public static FileConfiguration config;
 
     @Override
     public void onEnable() {
         VideoViewer.instance = this; // Needs to be first
+        VideoViewer.config = this.getConfig();
         VideoViewer.log("VideoViewer Enabled!");
 
         Bukkit.getScheduler().cancelTasks(this); // Stop tasks on reload
@@ -50,8 +53,10 @@ public class VideoViewer extends JavaPlugin {
         this.getCommand("screen").setExecutor(new CommandScreen());
         this.getCommand("screen").setTabCompleter(mtc);
 
-        // Mute warning given by compressed jars
-        Bukkit.getLogger().log(Level.INFO, "test");
+        // Generate Config
+        config.addDefault("max-entities-per-screen", 1024);
+        config.options().copyDefaults(true);
+        this.saveConfig();
     }
 
     @Override
