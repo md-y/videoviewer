@@ -17,7 +17,6 @@ import org.bukkit.plugin.java.annotation.plugin.Website;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 
 @Plugin(name="VideoViewer", version="0.1")
 @Description("A Plugin for creating video screens and playing videos on them.")
