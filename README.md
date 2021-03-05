@@ -19,3 +19,5 @@ Use ```/screen select``` to select the nearest screen for playback.
 The plugin uses [JavaCV](https://github.com/bytedeco/javacv) with shaded binaries. 
 
 In order to minimize the plugin jar size, it is recommended that one of the builds scripts is used or that building is done following [this](https://github.com/bytedeco/javacpp-presets/wiki/Reducing-the-Number-of-Dependencies#include-binaries-only-for-one-or-more-platforms) article.
+
+Or you can download from the [release page](https://github.com/md-y/videoviewer/releases).
